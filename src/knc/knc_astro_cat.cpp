@@ -7,8 +7,8 @@ namespace knc {
     class knc_astro_cat : public mj::game {
     public:
         knc_astro_cat(int completed_games, const mj::game_data& data);
-        
-bn::string<16> title() const override;
+
+        bn::string<16> title() const override;  // <-- make sure this is string<16>, not string_view
         int total_frames() const override;
         mj::game_result play(const mj::game_data& data) override;
         bool victory() const override;
