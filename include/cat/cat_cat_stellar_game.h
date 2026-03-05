@@ -1,7 +1,10 @@
-ifndef CAT_CAT_STELLAR_GAME_H
+#ifndef CAT_CAT_STELLAR_GAME_H
 #define CAT_CAT_STELLAR_GAME_H
 
 #include "mj/mj_game.h"
+#include "bn_string.h"
+#include "player.h"
+
 namespace cat
 {
     class cat_cat_stellar_game : public mj::game
