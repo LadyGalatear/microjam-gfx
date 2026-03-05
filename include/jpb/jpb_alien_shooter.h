@@ -9,12 +9,12 @@ namespace jpb {
 
       int total_frames() const override;
 
-      mj::game_result play(const mj::game_data& data)override;
+      mj::game_result play(const mj::game_data& data) override;
 
       bool victory() const override;
 
-      void fade_in(const mj::game_data& data)override;
+      void fade_in(const mj::game_data& data) override;
 
-      void fade_out(const mj::game_data& data)override;
-  }
+      void fade_out(const mj::game_data& data) override;
+  };
 }
