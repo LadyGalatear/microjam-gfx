@@ -1,5 +1,7 @@
 #include "cat_cat_stellar_game.h"
 
+
+// add an anonymous namespace after your includes but before 
 namespace
 {
     constexpr bn::string_view code_credits[] = { "Nadia Ivanishchuk", "Paris Allkurti" };
@@ -7,6 +9,14 @@ namespace
     constexpr bn::string_view sfx_credits[] = {""};
     constexpr bn::string_view music_credits[] = {""};
 }
+
+// Macros used to add game to game list
+MJ_GAME_LIST_ADD(cat::cat_cat_stellar_game) // The class of the game is used here
+MJ_GAME_LIST_ADD_CODE_CREDITS(code_credits)
+MJ_GAME_LIST_ADD_GRAPHICS_CREDITS(graphics_credits)
+MJ_GAME_LIST_ADD_MUSIC_CREDITS(music_credits)
+MJ_GAME_LIST_ADD_SFX_CREDITS(sfx_credits)
+
 
 // All game functions/classes/variables/constants scoped to the namespace
 namespace cat
@@ -31,7 +41,7 @@ cat_cat_stellar_game::cat_cat_stellar_game([[maybe_unused]] int completed_games,
  * Must be <= 16 characters long
  */
 bn::string<16> cat_cat_stellar_game::title() const {
-    return "Collect the stars";
+    return "Collect Stars";
 }
 
 /**
