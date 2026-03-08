@@ -1,4 +1,4 @@
-#include "bal/player.h"
+#include "bal/bal_player.h"
 
 #include <bn_keypad.h>
 
@@ -7,7 +7,7 @@
 namespace bal {
 
     player::player(bn::fixed_point starting_position, bn::fixed speed) :
-    _sprite(bn::sprite_items::aub_dot.create_sprite(starting_position)),
+    _sprite(bn::sprite_items::bal_dot.create_sprite(starting_position)),
     _speed(speed)
     {}
 
