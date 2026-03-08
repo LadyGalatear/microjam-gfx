@@ -29,5 +29,9 @@ obstacle::obstacle(bn::fixed starting_x, bn::fixed starting_y, bn::fixed speed, 
 
 void obstacle::update(player& player){
     _bounding_box = create_bounding_box(_sprite, _size);
+
+    // moves obstacles towards the left
+    _sprite.set_x(_sprite.x() + _speed);
+
 }
 }

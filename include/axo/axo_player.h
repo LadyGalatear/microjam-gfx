@@ -35,6 +35,8 @@ class player {
          * Reads from the d-pad and moves the player by one frame accordingly.
          */
         void update();
+
+        bool alive() const;
     
     private:
         // The sprite to display the player
@@ -42,8 +44,8 @@ class player {
         // The pixels/frame the player moves in each dimension
         bn::fixed _speed;
         bn::size _size;
-        bn::rect _bounding_box;
-        bool still_alive;
+        bn::rect _bounding_box() const;
+
 };
 
 }

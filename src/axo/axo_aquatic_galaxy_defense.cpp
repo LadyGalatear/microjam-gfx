@@ -39,7 +39,8 @@ namespace axo
 axo_aquatic_galaxy_defense::axo_aquatic_galaxy_defense([[maybe_unused]] int completed_games, 
     [[maybe_unused]] const mj::game_data& data) :
         mj::game("axo"),
-        _player(player({20, 0}, 2, PLAYER_SIZE))
+        _player(player({20, 0}, 2, PLAYER_SIZE)),
+        _obstacle(obstacle(100,50, 1, OBSTACLE_SIZE))
         {}
 
 /**
@@ -74,6 +75,11 @@ mj::game_result axo_aquatic_galaxy_defense::play([[maybe_unused]] const mj::game
 {
     // update the player position
     _player.update();
+    // spawn single obstacle and update it
+    _obstacle.update(_player);
+    if(_player.bounding_box().intersects(_obstacle.bounding_box())){
+        _player._still_alive = false;
+    }
 
     // Creates a game result indicating whether the game is finished and whether the title should be hidden early
     // For this game the game should end early if the player has won (if victory returns true)
@@ -88,7 +94,10 @@ mj::game_result axo_aquatic_galaxy_defense::play([[maybe_unused]] const mj::game
  * In this particular microgame the player wins if they make the ball leave the screen.
  */
 bool axo_aquatic_galaxy_defense::victory() const {
-    return false;
+    // player wins if they are still alive at the end of the game
+    return _player.alive();
+    // player loses if they collide with the obstacle, which sets still_alive to false in player update
+
 }
 
 /**

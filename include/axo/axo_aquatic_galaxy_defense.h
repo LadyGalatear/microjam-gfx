@@ -5,6 +5,7 @@
 
 #include "mj/mj_game.h"
 #include "axo/axo_player.h"
+#include "axo/axo_obstacle.h"
 
 namespace axo
 {
@@ -66,6 +67,8 @@ class axo_aquatic_galaxy_defense : public mj::game
         private:
         // The character that the player can move
         player _player;
+        // The obstacles in the game
+        obstacle _obstacle;
 };
 
 }

@@ -1,6 +1,7 @@
 #include <bn_keypad.h>
 
 #include "axo/axo_player.h"
+#include "axo/axo_obstacle.h"
 #include "bn_sprite_items_axo_axolotl.h"
 
 // All game functions/classes/variables/constants scoped to the namespace
@@ -13,10 +14,7 @@ namespace axo {
  */
 static bn::rect create_bounding_box(bn::sprite_ptr _sprite, bn::size box_size)
 {
-    return bn::rect(_sprite.x().round_integer(),
-                    _sprite.y().round_integer(),
-                    box_size.width(),
-                    box_size.height());
+    return bn::rect(bn::fixed_point(_sprite.x(), _sprite.y()), box_size);
 }
 
 /**
@@ -29,7 +27,8 @@ player::player(bn::fixed_point starting_position, bn::fixed speed, bn::size play
     _sprite(bn::sprite_items::axo_axolotl.create_sprite(starting_position)),
     _speed(speed),
     _size(player_size)
-    {}
+{
+}
 
 /**
  * Reads from the d-pad and moves the player by one frame accordingly.
@@ -61,7 +60,12 @@ void player::update() {
     if (_sprite.y() > MAX_Y) {
         _sprite.set_y(MAX_Y);
     }
+
+
 }
+    bool player::alive() const {
+        return true;
+    }
 
 
 }

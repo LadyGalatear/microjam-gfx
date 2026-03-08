@@ -12,6 +12,8 @@
 // All game functions/classes/variables/constants scoped to the namespace
 namespace axo {
 
+    static constexpr bn::size OBSTACLE_SIZE = {16, 16};
+
 /**
  * A sprite flying through space!
  */
