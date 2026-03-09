@@ -10,7 +10,7 @@
 namespace
 {
     constexpr bn::string_view code_credits[] = { "Nadia Ivanishchuk", "Paris Allkurti" };
-    constexpr bn::string_view graphics_credits[] = { "Kenney Game Assets" };
+    constexpr bn::string_view graphics_credits[] = { "Paris Allkurti", "Nadia Ivanishchuk" };
     constexpr bn::string_view sfx_credits[] = {""};
     constexpr bn::string_view music_credits[] = {""};
 }
@@ -20,7 +20,7 @@ namespace cat
 {
 
 /**
- * Constructor for an instance of an aub_test_game
+ * Constructor for an instance of a cat_stellar_game
  * 
  * First item in the initializer list MUST be a call to the superclass, mj::game with the identifier for the microgame.
  * 
@@ -80,17 +80,11 @@ mj::game_result cat_cat_stellar_game::play([[maybe_unused]] const mj::game_data&
 /**
  * Returns whether the player has won the microgame.
  * 
- * In this particular microgame the player wins if they make the ball leave the screen.
+ * In this particular microgame the player wins if they collect enough stars before time runs out.
  */
 bool cat_cat_stellar_game::victory() const {
     return _stars_collected >= _stars_to_win;
 }
-
-/**
- * Called repeatedly as the game fades into view. Unused for this particular microgame.
- * 
- * @param data shared information, such as a rng and number of frames left in the microgame
- */
 
 void cat_cat_stellar_game::_check_collection()
 {
@@ -114,13 +108,18 @@ void cat_cat_stellar_game::_check_collection()
     }
 }
 
+/**
+ * Called repeatedly as the game fades into view. Unused for this particular microgame.
+ * 
+ * @param data shared information, such as a rng and number of frames left in the microgame
+ */
 void cat_cat_stellar_game::fade_in([[maybe_unused]] const mj::game_data& data)
 {
 }
 
 
 /**
- * Called repeatedly as the game fades into view. Unused for this particular microgame.
+ * Called repeatedly as the game fades out of view. Unused for this particular microgame.
  * 
  * @param data shared information, such as a rng and number of frames left in the microgame
  */
@@ -136,4 +135,3 @@ MJ_GAME_LIST_ADD_CODE_CREDITS(code_credits)
 MJ_GAME_LIST_ADD_GRAPHICS_CREDITS(graphics_credits)
 MJ_GAME_LIST_ADD_MUSIC_CREDITS(music_credits)
 MJ_GAME_LIST_ADD_SFX_CREDITS(sfx_credits)
-
