@@ -46,13 +46,22 @@ namespace sno
     {
         _player.update();
         _player.attraction(_black_hole.position());
+
+        // Check if player collides with black hole
+        if (_player.collides_with(_black_hole.position(), 8))
+        {
+            _player_captured = true;
+        }
+
         mj::game_result result(victory(), false);
         return result;
     }
 
     bool sno_test_game::victory() const
     {
-        return _player.out_of_bounds();
+        // Player wins by surviving (staying out of the black hole)
+        // Player loses if captured - returning false here means they lose
+        return !_player_captured && _player.out_of_bounds();
     }
 
     void sno_test_game::fade_in([[maybe_unused]] const mj::game_data &data)

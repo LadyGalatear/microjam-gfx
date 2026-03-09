@@ -55,22 +55,41 @@ namespace sno
                _sprite.y() < MIN_Y;
     }
 
-    void player::attraction(bn::fixed_point bh_position) 
+    void player::attraction(bn::fixed_point bh_position)
     {
         bn::fixed_point pos = _sprite.position();
 
-        if(pos.x() < bh_position.x()) {
+        if (pos.x() < bh_position.x())
+        {
             _sprite.set_x(pos.x() + 1);
-        } 
-        else if(pos.x() > bh_position.x()) {
+        }
+        else if (pos.x() > bh_position.x())
+        {
             _sprite.set_x(pos.x() - 1);
         }
 
-        if(pos.y() < bh_position.y()) {
+        if (pos.y() < bh_position.y())
+        {
             _sprite.set_y(pos.y() + 1);
         }
-        else if(pos.y() > bh_position.y()) {
+        else if (pos.y() > bh_position.y())
+        {
             _sprite.set_y(pos.y() - 1);
         }
+    }
+
+    bn::fixed_point player::position() const
+    {
+        return _sprite.position();
+    }
+
+    bool player::collides_with(bn::fixed_point other_position, int radius) const
+    {
+        bn::fixed dx = _sprite.x() - other_position.x();
+        bn::fixed dy = _sprite.y() - other_position.y();
+
+        // Check if within a square bounding box around the black hole
+        return (dx > -radius && dx < radius) &&
+               (dy > -radius && dy < radius);
     }
 }

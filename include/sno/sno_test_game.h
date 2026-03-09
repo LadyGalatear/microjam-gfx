@@ -80,6 +80,7 @@ class sno_test_game : public mj::game
         // The character that the player can move
         player _player;
         black_hole _black_hole;
+        bool _player_captured = false;
 };
 
 }
