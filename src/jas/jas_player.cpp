@@ -23,6 +23,7 @@ namespace jas
           _engine_fired(false)
     {
     }
+
     /**
      * Reads from the d-pad and moves the player by one frame accordingly.
      */
