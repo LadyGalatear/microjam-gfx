@@ -39,7 +39,7 @@ any_game_name::any_game_name([[maybe_unused]] int completed_games, [[maybe_unuse
         _astronaut_sprite = bn::sprite_items::astronaut.create_sprite(0, -20);
         _player.emplace(*_astronaut_sprite);
 
-        _moon_sprite = bn::sprite_items::moon.create_sprite(0, _moon_y);
+        _moon_sprite = bn::sprite_items::moon.create_sprite(80, _moon_y);
 
     }
 
@@ -53,17 +53,17 @@ int any_game_name::total_frames() const {
     return 600;
 }
 
-mj::game_result any_game_name::play(const mj::game_data& data) {
+mj::game_result any_game_name::play([[maybe_unused]] const mj::game_data& data) {
     if (_player) {
         _player->update(bn::span<const platform>(_platforms, 3));
 
-        if (_player->y() < -50) { 
+        if (_player->y() < -50 && _player->x() > 70 && _player->x() < 80) { 
          
             return mj::game_result(true,true);
              
         }
 
-        if (_player->y() > 65) {
+        if (_player->y() > 85) {
             _has_lost = true; 
             return mj::game_result(true,false);
         }
