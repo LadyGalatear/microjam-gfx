@@ -3,6 +3,14 @@
 #include "bn_sprite_items_jpb_ship.h"
 
 namespace jpb {
+    
+    bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size) {
+        return bn::rect(sprite.x().round_integer(),
+                        sprite.y().round_integer(),
+                        box_size.width(),
+                        box_size.height());
+    }
+
     jpb_player::jpb_player(bn::fixed_point starting_position, bn::fixed_point enemy_position, bn::fixed _speed) :
         player_sprite(bn::sprite_items::jpb_ship.create_sprite(starting_position)),
         enemy_sprite(bn::sprite_items::jpb_ship.create_sprite(enemy_position)),

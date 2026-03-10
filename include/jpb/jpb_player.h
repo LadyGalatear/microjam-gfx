@@ -9,9 +9,13 @@
 
 namespace jpb {
 
+bn::rect create_bounding_box(bn::sprite_ptr sprite, bn::size box_size);
+
+static constexpr bn::size PLAYER_SIZE = {8, 8};
+
 class jpb_player {
     public:
-        jpb_player(bn::fixed_point player_position, bn::fixed_point enemy_position, bn::fixed _speed);
+        jpb_player(bn::fixed_point player_position, bn::fixed_point enemy_position, bn::size player_size, bn::fixed _speed);
 
         void update();
 
@@ -19,7 +23,7 @@ class jpb_player {
     
     private:
         bn::sprite_ptr player_sprite;
-        bn::sprite_ptr enemy_sprite;
+        bn::size player_size;
         bn::fixed speed;
 };
 
