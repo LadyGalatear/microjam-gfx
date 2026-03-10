@@ -109,7 +109,7 @@ namespace mar
      *
      * In this particular microgame the player wins if they make the ball leave the screen.
      */
-    bool mar_mars_escape::victory() const
+    bool mar_mars_escape::victory() const 
     {
         return _player.out_of_bounds();
     }

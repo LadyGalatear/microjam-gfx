@@ -31,16 +31,15 @@ namespace mar
         mar_player(bn::fixed_point starting_position, bn::fixed speed);
 
         /**
+         * returns
+         */
+        bn::rect getHitBox();
+
+
+        /**
          * Reads from the d-pad and moves the player by one frame accordingly.
          */
         void update();
-
-        /**
-         * Returns whether the player has left the screen
-         *
-         * @return true if the player has left the screen, false if it is still on the screen
-         */
-        bool out_of_bounds() const;
 
     private:
         // The sprite to display the player

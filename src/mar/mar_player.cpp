@@ -35,26 +35,16 @@ namespace mar
         // {
         //     _sprite.set_x(_sprite.x() + _speed);
         // }
-        if (bn::keypad::up_held() && _sprite.y() > MIN_Y)
+        if (bn::keypad::up_held() && _sprite.y() > MIN_Y) 
         {
             _sprite.set_y(_sprite.y() - _speed);
+            
         }
         if (bn::keypad::down_held() && _sprite.y() < MAX_Y)
         {
             _sprite.set_y(_sprite.y() + _speed);
         }
-    }
 
-    /**
-     * Returns whether the player has left the screen
-     *
-     * @return true if the player has left the screen, false if it is still on the screen
-     */
-    bool mar_player::out_of_bounds() const
-    {
-        return _sprite.x() > MAX_X ||
-               _sprite.x() < MIN_X ||
-               _sprite.y() > MAX_Y ||
-               _sprite.y() < MIN_Y;
+        _rect.position(_sprite.x().round_integer(),_sprite.y().round_integer());
     }
 }
