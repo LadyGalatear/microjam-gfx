@@ -72,14 +72,14 @@ namespace cat
     private:
         // The number of stars the player must collect to win
         //static constexpr int _stars_to_win = 3;
-        static constexpr int _total_stars = 5;
+        static constexpr int _total_stars = 10;
         static constexpr bn::fixed _collect_distance = 16;
 
         mj::difficulty_level _difficulty;
         int _stars_to_win;
 
         cat_player _player;
-        bn::array<bn::optional<bn::sprite_ptr>, 5> _stars;
+        bn::array<bn::optional<bn::sprite_ptr>, 10> _stars;
         int _stars_collected;
 
         void _check_collection();

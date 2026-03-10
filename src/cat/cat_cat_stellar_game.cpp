@@ -47,11 +47,11 @@ cat_cat_stellar_game::cat_cat_stellar_game([[maybe_unused]] int completed_games,
     switch(difficulty)
     {
         case mj::difficulty_level::EASY:
-            return 1.5;
+            return 2.5;
         case mj::difficulty_level::NORMAL:
             return 2.0;
         case mj::difficulty_level::HARD:
-            return 2.5;
+            return 1.5;
         default:
             return 2.0;
     }
@@ -62,11 +62,11 @@ int cat_cat_stellar_game::_recommended_stars_to_win(mj::difficulty_level difficu
     switch(difficulty)
     {
         case mj::difficulty_level::EASY:
-            return 2;
-        case mj::difficulty_level::NORMAL:
             return 3;
+        case mj::difficulty_level::NORMAL:
+            return 5;
         case mj::difficulty_level::HARD:
-            return 4;
+            return 7;
         default:
             return 3;
     }
