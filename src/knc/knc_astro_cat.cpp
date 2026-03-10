@@ -9,7 +9,7 @@ namespace {
 
 namespace knc {
 
-    knc_astro_cat::knc_astro_cat(int completed_games, const mj::game_data& data)
+    knc_astro_cat::knc_astro_cat([[maybe_unused]] int completed_games, [[maybe_unused]] const mj::game_data& data)
         : mj::game("knc"),
         // start in middle, speed number 2
         _cat(bn::fixed_point(0,0), 2),
