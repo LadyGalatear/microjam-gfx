@@ -27,14 +27,6 @@ namespace mar
      */
     void mar_player::update()
     {
-        // if (bn::keypad::left_held())
-        // {
-        //     _sprite.set_x(_sprite.x() - _speed);
-        // }
-        // if (bn::keypad::right_held())
-        // {
-        //     _sprite.set_x(_sprite.x() + _speed);
-        // }
         if (bn::keypad::up_held() && _sprite.y() > MIN_Y)
         {
             _sprite.set_y(_sprite.y() - _speed);
