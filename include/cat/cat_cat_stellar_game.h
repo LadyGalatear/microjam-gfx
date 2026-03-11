@@ -87,6 +87,7 @@ namespace cat
         bool _enemy_collision() const;
         void _update_enemy();
         bool _lost;
+   
 
         bn::array<bn::optional<bn::sprite_ptr>, _total_stars> _stars;
         int _stars_collected;
@@ -100,6 +101,7 @@ namespace cat
         //helper function
         static bn::fixed _recommended_player_speed(mj::difficulty_level difficulty);
         static int _recommended_stars_to_win(mj::difficulty_level difficulty);
+        static bn::fixed _recommended_enemy_speed(mj::difficulty_level difficulty);
     };
 }
 

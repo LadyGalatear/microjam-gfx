@@ -39,6 +39,7 @@ cat_cat_stellar_game::cat_cat_stellar_game([[maybe_unused]] int completed_games,
     _player({0, 0}, _recommended_player_speed(_difficulty)),
     _enemy(bn::sprite_items::cat_enemy.create_sprite(40, 0)),
     _stars_collected(0),
+    _lost(false),
     _text_generator(mj::small_sprite_font),
     _background(bn::regular_bg_items::cat_background.create_bg(0, 0))
     {
@@ -104,7 +105,7 @@ void cat_cat_stellar_game::_update_enemy()
     bn::fixed player_x = _player.position().x();
     bn::fixed player_y = _player.position().y();
 
-    bn::fixed enemy_speed = 0.5;
+    bn::fixed enemy_speed = _recommended_enemy_speed(_difficulty);
 
     if(player_x < enemy_x)
     {
@@ -125,6 +126,27 @@ void cat_cat_stellar_game::_update_enemy()
     }
 
     _enemy.set_position(enemy_x, enemy_y);
+}
+
+/**
+ * This function returns the recommended speed for the enemy based on the difficulty level.
+ */
+ bn::fixed cat_cat_stellar_game::_recommended_enemy_speed(mj::difficulty_level difficulty)
+{
+    switch(difficulty)
+    {
+        case mj::difficulty_level::EASY:
+            return 0.4;
+
+        case mj::difficulty_level::NORMAL:
+            return 0.6;
+
+        case mj::difficulty_level::HARD:
+            return 0.8;
+
+        default:
+            return 0.6;
+    }
 }
 
 /**
@@ -163,7 +185,7 @@ mj::game_result cat_cat_stellar_game::play([[maybe_unused]] const mj::game_data&
 
        if(_enemy_collision())
     {
-        return { false, false };
+        return { true, false };
     }
 
     return { victory(), false};
@@ -175,6 +197,10 @@ mj::game_result cat_cat_stellar_game::play([[maybe_unused]] const mj::game_data&
  * In this particular microgame the player wins if they collect enough stars before time runs out.
  */
 bool cat_cat_stellar_game::victory() const {
+    if(_lost)
+    {
+        return false;
+    }
     return _stars_collected >= _stars_to_win;
 }
 
