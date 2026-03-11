@@ -26,6 +26,7 @@ namespace aaa
                                                                                                                        _player(bn::fixed_point(0, 0))
     {
         _asteroids = _recommended_enemy_kill(recommended_difficulty_level(completed_games, data));
+        _hits = 0;
 
             for (int i = 0; i < _enemies.max_size(); i++)
         {
@@ -61,6 +62,12 @@ namespace aaa
         for (int i = 0; i < _enemies.size(); i++)
         {
             _enemies[i].update();
+            if(_enemies[i].getRect().intersects(_player.getRect())){
+                _hits++;
+                _asteroids = _asteroids - 1; //Even if the asteroid hits the player, it still counts as towards the win conditon
+                _enemies.erase(_enemies.begin() + i);
+                return mj::game_result(_hits == 3, false); //the game will end if the player is hit 3 times.
+            }
         }
 
         // I am aware that this is a nested for loop, but trying to make this operate inside the classes would have required passing in the information for the enemy vector

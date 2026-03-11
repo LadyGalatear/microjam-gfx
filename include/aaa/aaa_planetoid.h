@@ -66,6 +66,7 @@ namespace aaa
         bn::vector<aaa_Bullet, 25> _bullets;
         bn::fixed _recommended_enemy_kill(mj::difficulty_level difficulty);
         bn::fixed _asteroids;
+        int _hits;
     };
 }
 
