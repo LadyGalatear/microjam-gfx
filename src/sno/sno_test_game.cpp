@@ -1,5 +1,6 @@
-#include "sno_test_game.h"
-
+#include "sno/sno_test_game.h"
+#include "sno/black_hole.h"
+#include "sno/sno_player.h"
 #include "bn_keypad.h"
 #include "bn_display.h"
 #include "bn_sprite_ptr.h"
@@ -11,7 +12,7 @@
 namespace
 {
     constexpr bn::string_view code_credits[] = {"Andrew Onjang & Mason Sabin"};
-    constexpr bn::string_view graphics_credits[] = {"TBD..."};
+    constexpr bn::string_view graphics_credits[] = {"Mason Sabin"};
     constexpr bn::string_view sfx_credits[] = {""};
     constexpr bn::string_view music_credits[] = {""};
 }
@@ -53,12 +54,7 @@ namespace sno
             _player_captured = true;
         }
 
-        _frames_elapsed++;
-
-        bool time_up = _frames_elapsed >= total_frames();
-        bool game_over = _player_captured || time_up;
-
-        mj::game_result result(_player_captured, game_over);
+        mj::game_result result(_player_captured, false);
         return result;
     }
 

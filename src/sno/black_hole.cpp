@@ -1,4 +1,4 @@
-#include "sno/black_hole.h"
+#include "black_hole.h"
 
 #include "bn_sprite_items_black_hole.h"
 
