@@ -18,8 +18,7 @@ namespace jas
      */
     player::player(bn::fixed_point starting_position, bn::fixed vertical_speed, bn::fixed gravity) : _sprite(bn::sprite_items::templander.create_sprite(starting_position)),
                                                                                                      _vertical_speed(vertical_speed),
-                                                                                                     _gravity(gravity),
-                                                                                                     _engine_fired(false)
+                                                                                                     _gravity(gravity)
     {
     }
     /**

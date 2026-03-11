@@ -76,7 +76,6 @@ namespace jas
 
         bn::fixed _gravity;
         bool _crashed;
-        bool _engine_fired;
     };
 
 }

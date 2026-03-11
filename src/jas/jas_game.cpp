@@ -50,7 +50,7 @@ namespace jas
         return "Rover Landing";
     }
 
-    bn::fixed _recommended_difficulty_multiplier(mj::difficulty_level difficulty){
+    bn::fixed jas_game::_recommended_difficulty_multiplier(mj::difficulty_level difficulty){
         if (difficulty == mj::difficulty_level::EASY)
         {
             return .025;
