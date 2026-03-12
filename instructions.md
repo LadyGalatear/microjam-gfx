@@ -237,12 +237,24 @@ Make/run, then add/commit/test. You should be tuning your game so that it's fun 
 
 Once you have added your difficulty levels, add/commit/push. Make a new PR! If you want to continue work past this, please make a new branch to continue your work.
 
-## Wave 7: Prettifying
+## Wave 7: Prettifying and incorporating feedback
 If you have feedback on a PR, PLEASE RESOLVE THOSE ISSUES BEFORE WORKING ON NEW FUNCTIONALITY.
 
 If your PR is still open, please make a NEW BRANCH to continue your work.
 
 PLEASE MAKE SURE TO PULL FROM UPSTREAM
+
+### Incorporating Feedback
+
+Please make improvements to your game based on the feedback you got from your classmates. You do not need to take every suggestion, but you should seriously consider what they say!
+
+Some types of improvements:
+
+- Making games easier/harder
+- Fixing bugs
+- Changing controls / game mechanics
+
+Make/test, then add/commit/push
 
 ### Adding a background
 
