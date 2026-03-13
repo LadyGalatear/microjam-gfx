@@ -60,6 +60,7 @@ namespace aaa
          */
         void fade_out(const mj::game_data &data) override;
 
+
     private:
         aaa_Player _player;
         bn::vector<aaa_enemy, 10> _enemies;
@@ -67,6 +68,7 @@ namespace aaa
         bn::fixed _recommended_enemy_kill(mj::difficulty_level difficulty);
         bn::fixed _asteroids;
         int _hits;
+        void _checkHit(bn::vector<aaa_enemy, 10> &enemies, bn::vector<aaa_Bullet, 25> &bullets, bn::fixed &asteroids);
     };
 }
 
