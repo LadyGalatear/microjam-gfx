@@ -76,6 +76,7 @@ namespace any {
      bn::optional<player> _player;
      bool _has_lost = false;
      bool _player_touching_moon() const;
+     bool _touched_moon() const;
 
      platform _platforms[3];
 

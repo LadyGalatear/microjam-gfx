@@ -93,11 +93,8 @@ mj::game_result any_game_name::play([[maybe_unused]] const mj::game_data& data) 
     if (_player) {
         _player->update(bn::span<const platform>(_platforms, 3));
 
-        bn::fixed dx = _player->x() - 90;
-        bn::fixed dy = _player->y() - _moon_y;
-
-        if (bn::abs(dx) < 10 && bn::abs(dy) < 10) { 
-            return mj::game_result(true, true); 
+        if (_touched_moon()) { 
+            return mj::game_result(true, true); // (finished, victory)
         }
 
         if (_player->y() > 80) {
@@ -110,19 +107,18 @@ mj::game_result any_game_name::play([[maybe_unused]] const mj::game_data& data) 
     return mj::game_result(false, false);
 }
 
-bool any_game_name::_player_touching_moon() const {
+bool any_game_name::_touched_moon() const {
     if (!_player) {
         return false;
     }
 
-    constexpr int x_threshold = 15;
-    constexpr int y_threshold = 15;
-    constexpr int moon_x = 85;
+    constexpr int moon_x = 85; 
+    constexpr int hitbox_size = 12; 
 
     bn::fixed dx = bn::abs(_player->x() - moon_x);
     bn::fixed dy = bn::abs(_player->y() - _moon_y);
 
-    return dx < x_threshold && dy < y_threshold;
+    return dx < hitbox_size && dy < hitbox_size;
 }
 
 bool any_game_name::victory() const {
@@ -130,7 +126,7 @@ bool any_game_name::victory() const {
         return false;
     }
     
-    return _player_touching_moon();
+    return _touched_moon();
 }
 
 void any_game_name::fade_in([[maybe_unused]]const mj::game_data& data)
