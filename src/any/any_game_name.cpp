@@ -110,11 +110,27 @@ mj::game_result any_game_name::play([[maybe_unused]] const mj::game_data& data) 
     return mj::game_result(false, false);
 }
 
-bool any_game_name::victory() const {
-    if (_has_lost || !_player)
-     return false;
+bool any_game_name::_player_touching_moon() const {
+    if (!_player) {
+        return false;
+    }
 
-    return bn::abs(_player->x() - 85) < 15 && bn::abs(_player->y() - _moon_y) < 15;
+    constexpr int x_threshold = 15;
+    constexpr int y_threshold = 15;
+    constexpr int moon_x = 85;
+
+    bn::fixed dx = bn::abs(_player->x() - moon_x);
+    bn::fixed dy = bn::abs(_player->y() - _moon_y);
+
+    return dx < x_threshold && dy < y_threshold;
+}
+
+bool any_game_name::victory() const {
+    if (_has_lost) {
+        return false;
+    }
+    
+    return _player_touching_moon();
 }
 
 void any_game_name::fade_in([[maybe_unused]]const mj::game_data& data)
