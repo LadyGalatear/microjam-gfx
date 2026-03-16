@@ -121,7 +121,7 @@ namespace aaa
         return 10;
     }
 
-    void aaa_planetoids::_checkHit(bn::vector<aaa_enemy, 10> &enemies, bn::vector<aaa_Bullet, 25> &bullets, bn::fixed &asteroids){
+    void aaa_planetoids::_checkHit(bn::vector<aaa_enemy, 12> &enemies, bn::vector<aaa_Bullet, 25> &bullets, bn::fixed &asteroids){
         // I am aware that this is a nested for loop, but trying to make this operate inside the classes would have required passing in the information for the enemy vector
         // I am not at this time able to dedicate that much mental power to solve this, so i instead have a nested loop to check each bullet to each enemy
         for (int i = bullets.size() - 1; i >= 0; i--){
@@ -131,8 +131,17 @@ namespace aaa
 
             for (int j = 0; j < enemies.size(); j++){
                 if (bullets[i].getRect().intersects(enemies[j].getRect())){
-                    enemies.erase(enemies.begin() + j);
+                    
                     asteroids = asteroids - 1;
+                    if (!_enemies[j].is_destroyed()) // this makes sure that the enemies destroyed boolean isnt already toggle to prevent duplicate calls
+                    {
+                        _enemies[j].destroyedAnimation(); // toggles boolean to create/start animation
+                        _asteroids = _asteroids - 1;      // placing this asteroid decrementer here worked best for triggering correct win condition
+                    }
+                    if (_enemies[j].animation_done()) // only deletes if animation is finished
+                    {
+                        _enemies.erase(_enemies.begin() + j);
+                    }
                 }
             }
             if (_outOfBounds(bullets[i])){
