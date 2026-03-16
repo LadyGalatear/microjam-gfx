@@ -2,6 +2,9 @@
 #ifndef SDG_GAME_H 
 #define SDG_GAME_H
 
+#include <bn_sprite_ptr.h>
+#include <bn_vector.h>
+
 #include "mj/mj_game.h"
 #include "sdg/input.h"
 
@@ -30,6 +33,8 @@ namespace sdg{
     private:
         // An instance of the players capability to input
         input _player;
+
+        bn::vector<bn::sprite_ptr, 10> _arrows;
 
         // Returns an array size that gradually increases, making codes longer
         // and therefore more difficult.

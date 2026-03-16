@@ -51,5 +51,9 @@ void input::update() {
 bool input::code_is_correct() const {
     return _progress == (_challenge.size());
 }
+const bn::vector<int, 10>& sdg::input::challenge() const
+{
+    return _challenge;
+}
 
 }
